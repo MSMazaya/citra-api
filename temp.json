@@ -1,0 +1,58 @@
+[
+    {
+        "file_name": "Noice",
+        "description": "Noice",
+        "setelah_pemakaian": true,
+        "url": "https://res.cloudinary.com/dw4bwn79m/image/upload/v1715842415/hbiec7fndiehrfguwbs7.jpg",
+        "features": {
+            "contrast": 0.0,
+            "dissimilarity": 0.0,
+            "homogeneity": 1.0,
+            "energy": 0.1220899781590064,
+            "correlation": 0.9999999999999999,
+            "ASM": 0.014905962766866659
+        }
+    },
+    {
+        "file_name": "asdfasf",
+        "description": "asdfasf",
+        "setelah_pemakaian": true,
+        "url": "http://res.cloudinary.com/dncbtxucm/image/upload/v1715847048/kkjwwi2ijomgix0ug2dw.jpg",
+        "features": {
+            "contrast": 0.0,
+            "dissimilarity": 0.0,
+            "homogeneity": 1.0,
+            "energy": 0.1220899781590064,
+            "correlation": 0.9999999999999999,
+            "ASM": 0.014905962766866659
+        }
+    },
+    {
+        "file_name": "14 mei sebelum",
+        "description": "14 mei sebelum",
+        "setelah_pemakaian": false,
+        "url": "http://res.cloudinary.com/dncbtxucm/image/upload/v1715848158/g8b8kjyozvx5x93bgqnd.jpg",
+        "features": {
+            "contrast": 0.0,
+            "dissimilarity": 0.0,
+            "homogeneity": 1.0,
+            "energy": 0.1220899781590064,
+            "correlation": 0.9999999999999999,
+            "ASM": 0.014905962766866659
+        }
+    },
+    {
+        "file_name": "14 Mei Setelah Pemakaian",
+        "description": "14 Mei Setelah Pemakaian",
+        "setelah_pemakaian": true,
+        "url": "http://res.cloudinary.com/dncbtxucm/image/upload/v1715848931/fl11d7tukxlwaqlq6qp4.jpg",
+        "features": {
+            "contrast": 0.0,
+            "dissimilarity": 0.0,
+            "homogeneity": 1.0,
+            "energy": 0.1220899781590064,
+            "correlation": 0.9999999999999999,
+            "ASM": 0.014905962766866659
+        }
+    }
+]
