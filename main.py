@@ -9,6 +9,8 @@ from pymongo import DESCENDING, ASCENDING
 from bson.binary import Binary, UuidRepresentation
 from fastapi.encoders import jsonable_encoder
 from typing import Optional
+import certifi
+ca = certifi.where()
 
 def compute_glcm_features(image, distances, angles):
     # Convert the image to grayscale
@@ -68,7 +70,7 @@ app.add_middleware(
 def startup_db_client():
     uri = "mongodb+srv://mmazaya:mvvWaAkr*3-7VU#@cluster0.f1ivbxc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     # Create a new client and connect to the server
-    client = MongoClient(uri, server_api=ServerApi('1'))
+    client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=ca)
     app.mongodb_client = client
     app.database = app.mongodb_client['citra']
     print("Connected to the MongoDB database!")
