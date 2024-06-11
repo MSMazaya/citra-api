@@ -7,6 +7,7 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from pymongo import DESCENDING, ASCENDING
 from bson.binary import Binary, UuidRepresentation
+import math
 from fastapi.encoders import jsonable_encoder
 from typing import Optional
 import certifi
@@ -22,35 +23,36 @@ def compute_glcm_features(image, distances, angles):
 
     # Extract features: contrast, dissimilarity, homogeneity, energy, correlation, ASM
     features = {
-        'contrast': feature.graycoprops(glcm, 'contrast'),
-        'dissimilarity': feature.graycoprops(glcm, 'dissimilarity'),
-        'homogeneity': feature.graycoprops(glcm, 'homogeneity'),
-        'energy': feature.graycoprops(glcm, 'energy'),
-        'correlation': feature.graycoprops(glcm, 'correlation'),
-        'ASM': feature.graycoprops(glcm, 'ASM')
+        'contrast': feature.graycoprops(glcm, 'contrast').mean(),
+        'dissimilarity': feature.graycoprops(glcm, 'dissimilarity').mean(),
+        'homogeneity': feature.graycoprops(glcm, 'homogeneity').mean(),
+        'energy': feature.graycoprops(glcm, 'energy').mean(),
+        'correlation': feature.graycoprops(glcm, 'correlation').mean(),
+        'ASM': feature.graycoprops(glcm, 'ASM').mean()
     }
 
-    return gray_image, glcm, features
+    return features
 
 def get_features(url):
-    image = io.imread('https://res.cloudinary.com/dw4bwn79m/image/upload/v1715842415/hbiec7fndiehrfguwbs7.jpg')
+    image = io.imread(url)
 
-    distances = [0]
-    angles = [0]
+    distances = [1, 2, 3]
+    angles = [0, math.pi/4, math.pi/2, 3*math.pi/4]
 
     # Compute GLCM features, GLCM matrix, and get the grayscale image
-    gray_image, glcm, features = compute_glcm_features(image, distances, angles)
+    features = compute_glcm_features(image, distances, angles)
 
     print(features)
 
     return {
-        'contrast': features["contrast"][0][0],
-        'dissimilarity': features["dissimilarity"][0][0],
-        'homogeneity': features["homogeneity"][0][0],
-        'energy': features["energy"][0][0],
-        'correlation': features["correlation"][0][0],
-        'ASM': features["ASM"][0][0],
+        'contrast': features["contrast"],
+        'dissimilarity': features["dissimilarity"],
+        'homogeneity': features["homogeneity"],
+        'energy': features["energy"],
+        'correlation': features["correlation"],
+        'ASM': features["ASM"],
     }
+
 
 origins = ["*"]
 
